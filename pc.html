@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head> 
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'> 
+<meta charset="utf-8">
+<title>大屏</title>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="js/pic2text.js"></script>
+<style>
+  html,body{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  html {
+    /* background:url(icon/bg_pc.jpg?{$ver}) no-repeat 0 0; */
+    background-size:100% 100%;
+    min-height: 100%;
+    background-attachment:fixed;
+    background-position: 0 100%;
+  }
+
+  .texttitle {
+    width: 32%;
+    top:280px;
+    left:34%;
+    opacity: 0;
+    position: absolute;
+  }
+</style>
+</head>
+<body>
+  <img id="texttitle" src="icon/title.png" class="texttitle">
+</body>
+<script>
+  
+  var cells = [{"x":0,"y":0},{"x":3,"y":0},{"x":6,"y":0},{"x":9,"y":0},{"x":14,"y":0},{"x":17,"y":0},{"x":20,"y":0},{"x":23,"y":0},{"x":28,"y":0},{"x":31,"y":0},{"x":38,"y":0},{"x":43,"y":0},{"x":46,"y":0},{"x":49,"y":0},{"x":54,"y":0},{"x":57,"y":0},{"x":60,"y":0},{"x":63,"y":0},{"x":68,"y":0},{"x":71,"y":0},{"x":74,"y":0},{"x":79,"y":0},{"x":82,"y":0},{"x":85,"y":0},{"x":88,"y":0},{"x":93,"y":0},{"x":96,"y":0},{"x":99,"y":0},{"x":108,"y":0},{"x":114,"y":0},{"x":119,"y":0},{"x":122,"y":0},{"x":125,"y":0},{"x":128,"y":0},{"x":133,"y":0},{"x":142,"y":0},{"x":147,"y":0},{"x":150,"y":0},{"x":153,"y":0},{"x":158,"y":0},{"x":167,"y":0},{"x":0,"y":3},{"x":9,"y":3},{"x":14,"y":3},{"x":23,"y":3},{"x":28,"y":3},{"x":32,"y":3},{"x":38,"y":3},{"x":43,"y":3},{"x":54,"y":3},{"x":63,"y":3},{"x":68,"y":3},{"x":79,"y":3},{"x":88,"y":3},{"x":93,"y":3},{"x":109,"y":3},{"x":113,"y":3},{"x":119,"y":3},{"x":128,"y":3},{"x":133,"y":3},{"x":142,"y":3},{"x":150,"y":3},{"x":158,"y":3},{"x":167,"y":3},{"x":0,"y":6},{"x":3,"y":6},{"x":6,"y":6},{"x":9,"y":6},{"x":14,"y":6},{"x":17,"y":6},{"x":20,"y":6},{"x":23,"y":6},{"x":28,"y":6},{"x":33,"y":6},{"x":38,"y":6},{"x":43,"y":6},{"x":54,"y":6},{"x":57,"y":6},{"x":60,"y":6},{"x":63,"y":6},{"x":68,"y":6},{"x":71,"y":6},{"x":74,"y":6},{"x":79,"y":6},{"x":82,"y":6},{"x":85,"y":6},{"x":88,"y":6},{"x":93,"y":6},{"x":96,"y":6},{"x":99,"y":6},{"x":111,"y":6},{"x":119,"y":6},{"x":128,"y":6},{"x":133,"y":6},{"x":142,"y":6},{"x":150,"y":6},{"x":158,"y":6},{"x":161,"y":6},{"x":164,"y":6},{"x":167,"y":6},{"x":0,"y":9},{"x":14,"y":9},{"x":23,"y":9},{"x":28,"y":9},{"x":34,"y":9},{"x":38,"y":9},{"x":43,"y":9},{"x":54,"y":9},{"x":60,"y":9},{"x":68,"y":9},{"x":79,"y":9},{"x":88,"y":9},{"x":99,"y":9},{"x":111,"y":9},{"x":119,"y":9},{"x":128,"y":9},{"x":133,"y":9},{"x":142,"y":9},{"x":150,"y":9},{"x":158,"y":9},{"x":167,"y":9},{"x":0,"y":12},{"x":14,"y":12},{"x":23,"y":12},{"x":28,"y":12},{"x":35,"y":12},{"x":38,"y":12},{"x":43,"y":12},{"x":46,"y":12},{"x":49,"y":12},{"x":54,"y":12},{"x":61,"y":12},{"x":68,"y":12},{"x":71,"y":12},{"x":74,"y":12},{"x":79,"y":12},{"x":88,"y":12},{"x":93,"y":12},{"x":96,"y":12},{"x":99,"y":12},{"x":111,"y":12},{"x":119,"y":12},{"x":122,"y":12},{"x":125,"y":12},{"x":128,"y":12},{"x":133,"y":12},{"x":136,"y":12},{"x":139,"y":12},{"x":142,"y":12},{"x":150,"y":12},{"x":158,"y":12},{"x":167,"y":12}];
+  var imgWidth = 170;
+  var imgHeight = 15;
+  var viewTop = 200
+  var data = [
+    {
+      headUrl: 'https://thirdwx.qlogo.cn/mmopen/vi_32/h28BE1KXKicpCtMzibI0zlnic9VcLI3Y1KweoXKME8L32Thss0VU3qDiahpZK19vnSOicwnJUtIlbiaONocPpgOrxmAQ/132'
+    }
+  ]
+
+  $(document).ready(function(){
+    let pic2Text = new Pic2Text({
+      top: viewTop,
+      width: 0.8,//80%
+      imgWidth: imgWidth,
+      imgHeight: imgHeight,
+      pixelUnit: 3,
+      cells: cells,
+      finish: function() {
+        $('.texttitle').css('top', viewTop + pic2Text.getHeight() + 50)
+        $('.texttitle').animate(
+          { opacity: 1 },
+          3000,
+          'swing',
+          function() {}
+        );
+      }
+    })
+
+    //一次性显示，头像数据集数量不足的补充虚拟头像
+    pic2Text.setPicData(data)
+    pic2Text.showAll()
+
+    /*
+    //模拟网络实时请求获取增量头像数据
+    setInterval(function(){
+      //data：本次新增的头像数据集
+      //追加3个虚拟头像数据集，当扫码人数较少时，大屏追加虚拟头像来优化显示效果
+      pic2Text.appendPicData(data, 0)
+    }, 500)*/
+
+    $('.texttitle').css('width', $(window).width()*0.8)
+    $('.texttitle').css('left', $(window).width()*0.1)
+  });
+</script>
+</html>

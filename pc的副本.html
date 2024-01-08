@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head> 
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'> 
+<meta charset="utf-8">
+<title>胰腺青年精英俱乐部</title>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<style>
+  html,body{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  html {
+    /*background:#0062A1;*/
+  }
+
+
+  html {
+    /* background:url({$cdnPath}/img/icon/bg_pc.jpg?{$ver}) no-repeat 0 0; */
+    background-size:100% 100%;
+    min-height: 100%;
+    background-attachment:fixed;
+    background-position: 0 100%;
+  }
+
+  .picview {
+    /* background:#ccc; */
+    margin:auto;
+    margin-top:50px;
+    position:relative;
+  }
+
+  .kvview {
+    width: 20%;
+    margin-left:40%;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+
+  .kv {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .title {
+    width: 30%;
+    position: absolute;
+    bottom:50px;
+    left:35%;
+    margin-left:0%;
+  }
+
+  .texttitle {
+    width: 32%;
+    top:280px;
+    left:34%;
+    opacity: 0;
+    position: absolute;
+  }
+
+  .logobottom {
+    width: 20%;
+    left:40%;
+    top:120px;
+    position: absolute;
+  }
+</style>
+</head>
+<body>
+  <!-- <div class="kvview">
+    <img src="{$cdnPath}/img/icon/kv_mobile.jpg?{$ver}" class="kv">
+  </div> -->
+  <!-- <img src="{$cdnPath}/img/icon/title.png" class="title"> -->
+  <!-- <div id="picview" class="picview"></div> -->
+  <img id="texttitle" src="icon/text_title_big.png" class="texttitle">
+  <!-- <img src="icon/logo_r.png" class="logobottom"> -->
+</body>
+<script>
+  var cells = [{"x":0,"y":0,"a":255},{"x":3,"y":0,"a":255},{"x":6,"y":0,"a":255},{"x":9,"y":0,"a":255},{"x":14,"y":0,"a":255},{"x":17,"y":0,"a":255},{"x":20,"y":0,"a":255},{"x":23,"y":0,"a":255},{"x":28,"y":0,"a":255},{"x":31,"y":0,"a":255},{"x":38,"y":0,"a":255},{"x":43,"y":0,"a":255},{"x":46,"y":0,"a":255},{"x":49,"y":0,"a":255},{"x":54,"y":0,"a":255},{"x":57,"y":0,"a":255},{"x":60,"y":0,"a":255},{"x":63,"y":0,"a":255},{"x":68,"y":0,"a":255},{"x":71,"y":0,"a":255},{"x":74,"y":0,"a":255},{"x":79,"y":0,"a":255},{"x":82,"y":0,"a":255},{"x":85,"y":0,"a":255},{"x":88,"y":0,"a":255},{"x":93,"y":0,"a":255},{"x":96,"y":0,"a":255},{"x":99,"y":0,"a":255},{"x":108,"y":0,"a":255},{"x":114,"y":0,"a":255},{"x":119,"y":0,"a":255},{"x":122,"y":0,"a":255},{"x":125,"y":0,"a":255},{"x":128,"y":0,"a":255},{"x":133,"y":0,"a":255},{"x":142,"y":0,"a":255},{"x":147,"y":0,"a":255},{"x":150,"y":0,"a":255},{"x":153,"y":0,"a":255},{"x":158,"y":0,"a":255},{"x":167,"y":0,"a":255},{"x":0,"y":3,"a":255},{"x":9,"y":3,"a":255},{"x":14,"y":3,"a":255},{"x":23,"y":3,"a":255},{"x":28,"y":3,"a":255},{"x":32,"y":3,"a":255},{"x":38,"y":3,"a":255},{"x":43,"y":3,"a":255},{"x":54,"y":3,"a":255},{"x":63,"y":3,"a":255},{"x":68,"y":3,"a":255},{"x":79,"y":3,"a":255},{"x":88,"y":3,"a":255},{"x":93,"y":3,"a":255},{"x":109,"y":3,"a":255},{"x":113,"y":3,"a":255},{"x":119,"y":3,"a":255},{"x":128,"y":3,"a":255},{"x":133,"y":3,"a":255},{"x":142,"y":3,"a":255},{"x":150,"y":3,"a":255},{"x":158,"y":3,"a":255},{"x":167,"y":3,"a":255},{"x":0,"y":6,"a":255},{"x":3,"y":6,"a":255},{"x":6,"y":6,"a":255},{"x":9,"y":6,"a":255},{"x":14,"y":6,"a":255},{"x":17,"y":6,"a":255},{"x":20,"y":6,"a":255},{"x":23,"y":6,"a":255},{"x":28,"y":6,"a":255},{"x":33,"y":6,"a":255},{"x":38,"y":6,"a":255},{"x":43,"y":6,"a":255},{"x":54,"y":6,"a":255},{"x":57,"y":6,"a":255},{"x":60,"y":6,"a":255},{"x":63,"y":6,"a":255},{"x":68,"y":6,"a":255},{"x":71,"y":6,"a":255},{"x":74,"y":6,"a":255},{"x":79,"y":6,"a":255},{"x":82,"y":6,"a":255},{"x":85,"y":6,"a":255},{"x":88,"y":6,"a":255},{"x":93,"y":6,"a":255},{"x":96,"y":6,"a":255},{"x":99,"y":6,"a":255},{"x":111,"y":6,"a":255},{"x":119,"y":6,"a":255},{"x":128,"y":6,"a":255},{"x":133,"y":6,"a":255},{"x":142,"y":6,"a":255},{"x":150,"y":6,"a":255},{"x":158,"y":6,"a":255},{"x":161,"y":6,"a":255},{"x":164,"y":6,"a":255},{"x":167,"y":6,"a":255},{"x":0,"y":9,"a":255},{"x":14,"y":9,"a":255},{"x":23,"y":9,"a":255},{"x":28,"y":9,"a":255},{"x":34,"y":9,"a":255},{"x":38,"y":9,"a":255},{"x":43,"y":9,"a":255},{"x":54,"y":9,"a":255},{"x":60,"y":9,"a":255},{"x":68,"y":9,"a":255},{"x":79,"y":9,"a":255},{"x":88,"y":9,"a":255},{"x":99,"y":9,"a":255},{"x":111,"y":9,"a":255},{"x":119,"y":9,"a":255},{"x":128,"y":9,"a":255},{"x":133,"y":9,"a":255},{"x":142,"y":9,"a":255},{"x":150,"y":9,"a":255},{"x":158,"y":9,"a":255},{"x":167,"y":9,"a":255},{"x":0,"y":12,"a":255},{"x":14,"y":12,"a":255},{"x":23,"y":12,"a":255},{"x":28,"y":12,"a":255},{"x":35,"y":12,"a":255},{"x":38,"y":12,"a":255},{"x":43,"y":12,"a":255},{"x":46,"y":12,"a":255},{"x":49,"y":12,"a":255},{"x":54,"y":12,"a":255},{"x":61,"y":12,"a":255},{"x":68,"y":12,"a":255},{"x":71,"y":12,"a":255},{"x":74,"y":12,"a":255},{"x":79,"y":12,"a":255},{"x":88,"y":12,"a":255},{"x":93,"y":12,"a":255},{"x":96,"y":12,"a":255},{"x":99,"y":12,"a":255},{"x":111,"y":12,"a":255},{"x":119,"y":12,"a":255},{"x":122,"y":12,"a":255},{"x":125,"y":12,"a":255},{"x":128,"y":12,"a":255},{"x":133,"y":12,"a":255},{"x":136,"y":12,"a":255},{"x":139,"y":12,"a":255},{"x":142,"y":12,"a":255},{"x":150,"y":12,"a":255},{"x":158,"y":12,"a":255},{"x":167,"y":12,"a":255}];
+  var imgWidth = 170;
+  var imgHeight = 15;
+  var vmHeadCount = 30;
+  var vw = 0
+  var vh = 0
+  var cellWidth = 0
+  var cellHeight = 0
+  var marginLeft = 0
+  var marginTop = 100
+  var currentId = 0
+  var picNum = 0
+  var isVmSetup = false
+  var cellSpace = 2 //瓦片间隔空间
+  var scale = 20
+  var interval = 30
+  var pixelUnit = 3
+  var enable = false
+
+  $(document).ready(function(){
+    let sw = $(window).width()
+    let sh = $(window).height()
+    vw = sw*0.56
+
+    cellWidth = Math.ceil(vw/imgWidth)
+    vw = cellWidth*imgWidth + imgWidth/pixelUnit*cellSpace
+    cellHeight = cellWidth
+    vh = cellHeight*imgHeight + imgHeight/pixelUnit*cellSpace
+    marginLeft = Math.ceil((sw - vw)/2)
+    let kvHeight = 100//Math.ceil(sw*1.0/900*506)
+    marginTop = sh*0.22//Math.ceil(((sh*0.9 - kvHeight) - vh)*0.5 + kvHeight)
+
+    $('.texttitle').css('width', vw + 'px')
+    $('.texttitle').css('left', Math.ceil((sw-vw)*0.5) + 'px')
+    $('.texttitle').css('top', (marginTop + vh + 25) + 'px')
+    $('.logobottom').css('top', (sh*0.75) + 'px')
+    //获取服务器数据
+    getCfg()
+  });
+
+  function addPic(cell, delay, headUrl) {
+    let picWidth = cellWidth*pixelUnit
+    let picHeight = cellHeight*pixelUnit
+    let sw = $(window).width()
+    let srcX = Math.floor(Math.random()*sw + 0);
+    let srcY = Math.floor(Math.random()*(marginTop+vh) + marginTop);
+    let img = $('<img>')
+    img.css('background', 'red')
+    img.css('width', picWidth*scale)
+    img.css('height', picHeight*scale)
+    img.css('position', 'absolute')
+    img.css('opacity', 0)
+    img.css('top', srcY + 'px')
+    img.css('left', srcX + 'px')
+    let idx = Math.floor(Math.random()*vmHeadCount + 1);
+    if(headUrl == "") {
+      img.attr('src', '{$cdnPath}/img/icon/head/' + idx + ".jpg")
+    } else {
+      img.attr('src', headUrl)
+    }
+    $('body').append(img)
+    let dstLeft = (cellWidth*cell.x + marginLeft + cellSpace*cell.x/pixelUnit)
+    let dstTop = (cellHeight*cell.y + marginTop + cellSpace*cell.y/pixelUnit)
+    setTimeout(function(){
+      img.animate(
+        { left: dstLeft + 'px', top: dstTop + 'px', width: picWidth + 'px', height: picHeight + 'px', opacity: 1 },
+        1000,
+        'swing',
+        function() {
+          // $(this).hide()
+        }
+      );
+    }, delay)
+  }
+
+  function getCfg() {
+    $.get("/service/cfg/getCfg", function(data, status) {})
+    .done(function(data) {
+      let result = data.result
+      if(result['enable'] == 1) {
+        enable = true
+        //console.log( data );
+        getNetData()
+      }
+    })
+    .fail(function(e) {
+      console.log( "error" );
+      console.log(e);
+    })
+    .always(function() {
+      console.log( "always" );
+      if(!enable) {
+        setTimeout(() => {
+          getCfg()
+        }, 1000);
+      }
+    });
+  }
+
+  function getNetData() {
+    $.get("/service/user/getNextUserList?id=" + currentId, function(data, status) {
+      let results = data.results
+
+      if(picNum >= cells.length) {
+        return
+      }
+
+      for(let i=0; i<results.length; i++) {
+        let row = results[i]
+        if(i>=cells.length) {
+          continue;
+        }
+        let headUrl = row['head_url'];
+        if(headUrl == null || headUrl == '') {
+          headUrl = '{$cdnPath}/img/icon/head/null_head.jpg'
+        }
+        addPic(cells[picNum], i*interval, headUrl)
+        picNum++
+        currentId = row['user_id']
+      }
+
+      if(!isVmSetup) {
+        let vmCount = cells.length - picNum
+        for(let i=0; i<vmCount; i++) {
+          addPic(cells[picNum + i], i*interval, "")
+        }
+        isVmSetup = true
+      }
+      console.log( " success" );
+
+      setTimeout(function(){
+        $('#texttitle').animate(
+          { opacity: 1 },
+          3000,
+          'swing',
+          function() {
+            // $(this).hide()
+          }
+        );
+      }, cells.length*interval + 500)
+
+      // setTimeout(function(){
+      //   getNetData()
+      // }, 2000)
+    })
+    .done(function() {
+      console.log( "second success" );
+    })
+    .fail(function(e) {
+      console.log( "error" );
+      console.log(e);
+    })
+    .always(function() {
+      console.log( "always" );
+    });
+  }
+</script>
+</html>
